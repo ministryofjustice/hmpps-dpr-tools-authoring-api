@@ -10,13 +10,13 @@ import java.time.LocalDate
 class ExampleResourceTest : IntegrationTestBase() {
 
   @Nested
-  @DisplayName("GET /example/time")
+  @DisplayName("GET /example/test")
   inner class TimeEndpoint {
 
     @Test
     fun `should return unauthorized if no token`() {
       webTestClient.get()
-        .uri("/example/time")
+        .uri("/example/test")
         .exchange()
         .expectStatus()
         .isUnauthorized
@@ -25,7 +25,7 @@ class ExampleResourceTest : IntegrationTestBase() {
     @Test
     fun `should return forbidden if no role`() {
       webTestClient.get()
-        .uri("/example/time")
+        .uri("/example/test")
         .headers(setAuthorisation())
         .exchange()
         .expectStatus()
@@ -35,7 +35,7 @@ class ExampleResourceTest : IntegrationTestBase() {
     @Test
     fun `should return forbidden if wrong role`() {
       webTestClient.get()
-        .uri("/example/time")
+        .uri("/example/test")
         .headers(setAuthorisation(roles = listOf("ROLE_WRONG")))
         .exchange()
         .expectStatus()
