@@ -1,18 +1,18 @@
 generic-service:
-  nameOverride: hmpps-template-kotlin
+  nameOverride: hmpps-dpr-tools-authoring-api
   productId: "UNASSIGNED" # productId for the product that this belongs too, i.e. DPS001, see README.md for details
 
   replicaCount: 4
 
   image:
-    repository: ghcr.io/ministryofjustice/hmpps-template-kotlin
+    repository: quay.io/hmpps/hmpps-dpr-tools-authoring-api
     tag: app_version # override at deployment time
     port: 8080
 
   ingress:
     enabled: true
     host: app-hostname.local # override per environment
-    tlsSecretName: hmpps-template-kotlin-cert
+    tlsSecretName: hmpps-dpr-tools-cert
 
   # Environment variables to load into the deployment
   env:
@@ -30,8 +30,11 @@ generic-service:
       APPLICATIONINSIGHTS_CONNECTION_STRING: "APPLICATIONINSIGHTS_CONNECTION_STRING"
 
   allowlist:
+    cloudplatform-live1-1: 35.178.209.113/32
+    cloudplatform-live1-2: 3.8.51.207/32
+    cloudplatform-live1-3: 35.177.252.54/32
     groups:
       - internal
 
 generic-prometheus-alerts:
-  targetApplication: hmpps-template-kotlin
+  targetApplication: hmpps-dpr-tools-authoring-api

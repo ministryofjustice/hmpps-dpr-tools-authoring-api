@@ -17,9 +17,10 @@ class OpenApiConfiguration(buildProperties: BuildProperties) {
   fun customOpenAPI(): OpenAPI = OpenAPI()
     .servers(
       listOf(
-        Server().url("https://template-kotlin-dev.hmpps.service.justice.gov.uk").description("Development"),
-        Server().url("https://template-kotlin-preprod.hmpps.service.justice.gov.uk").description("Pre-Production"),
-        Server().url("https://template-kotlin.hmpps.service.justice.gov.uk").description("Production"),
+        Server().url("https://dpr-tools-authoring-api-dev.hmpps.service.justice.gov.uk").description("Development"),
+        Server().url("https://dpr-tools-authoring-api-test.hmpps.service.justice.gov.uk").description("Test"),
+        Server().url("https://dpr-tools-authoring-api-preprod.hmpps.service.justice.gov.uk").description("Pre-Production"),
+        Server().url("https://dpr-tools-authoring-api.hmpps.service.justice.gov.uk").description("Production"),
         Server().url("http://localhost:8080").description("Local"),
       ),
     )
@@ -27,7 +28,7 @@ class OpenApiConfiguration(buildProperties: BuildProperties) {
       listOf(),
     )
     .info(
-      Info().title("HMPPS Template Kotlin").version(version)
+      Info().title("HMPPS DPR Tools Authoring API").version(version)
         .contact(Contact().name("HMPPS Digital Studio").email("feedback@digital.justice.gov.uk")),
     )
   // TODO Add security schema and roles in `.components()` and `.addSecurityItem()`
