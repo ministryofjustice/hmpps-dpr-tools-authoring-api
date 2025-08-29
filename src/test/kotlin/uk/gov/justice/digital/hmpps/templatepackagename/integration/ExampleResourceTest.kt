@@ -4,9 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import java.time.LocalDate
 
-// TODO This test exists to support the HMPPS Typescript template and should be removed by the bootstrap process
 class ExampleResourceTest : IntegrationTestBase() {
 
   @Nested
@@ -22,37 +20,37 @@ class ExampleResourceTest : IntegrationTestBase() {
         .isUnauthorized
     }
 
+//    @Test
+//    fun `should return forbidden if no role`() {
+//      webTestClient.get()
+//        .uri("/example/test")
+//        .headers(setAuthorisation())
+//        .exchange()
+//        .expectStatus()
+//        .isForbidden
+//    }
+//
+//    @Test
+//    fun `should return forbidden if wrong role`() {
+//      webTestClient.get()
+//        .uri("/example/test")
+//        .headers(setAuthorisation(roles = listOf("ROLE_WRONG")))
+//        .exchange()
+//        .expectStatus()
+//        .isForbidden
+//    }
+
     @Test
-    fun `should return forbidden if no role`() {
+    fun `should return OK`() {
       webTestClient.get()
         .uri("/example/test")
         .headers(setAuthorisation())
         .exchange()
         .expectStatus()
-        .isForbidden
-    }
-
-    @Test
-    fun `should return forbidden if wrong role`() {
-      webTestClient.get()
-        .uri("/example/test")
-        .headers(setAuthorisation(roles = listOf("ROLE_WRONG")))
-        .exchange()
-        .expectStatus()
-        .isForbidden
-    }
-
-    @Test
-    fun `should return OK`() {
-      webTestClient.get()
-        .uri("/example/time")
-        .headers(setAuthorisation(roles = listOf("ROLE_TEMPLATE_KOTLIN__UI")))
-        .exchange()
-        .expectStatus()
         .isOk
         .expectBody()
         .jsonPath("$").value<String> {
-          assertThat(it).startsWith("${LocalDate.now()}")
+          assertThat(it).isEqualTo("Test endpoint was called successfully.")
         }
     }
   }

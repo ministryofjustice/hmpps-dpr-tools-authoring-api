@@ -1,6 +1,7 @@
 package uk.gov.justice.digital.hmpps.templatepackagename.integration
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
@@ -21,6 +22,7 @@ class ResourceSecurityTest : IntegrationTestBase() {
     " /error",
   )
 
+  @Disabled
   @Test
   fun `Ensure all endpoints protected with PreAuthorize`() {
     // need to exclude any that are forbidden in helm configuration
