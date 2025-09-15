@@ -1,11 +1,11 @@
 version: "3"
 services:
-  hmpps-template-kotlin:
+  hmpps-dpr-tools-authoring-api:
     build:
       context: .
     networks:
       - hmpps
-    container_name: hmpps-template-kotlin
+    container_name: hmpps-dpr-tools-authoring-api
     ports:
       - "8080:8080"
     healthcheck:
