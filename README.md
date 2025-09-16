@@ -135,3 +135,4 @@ docker compose pull && docker compose up --scale hmpps-dpr-tools-authoring-api=0
 
 will just start a docker instance of HMPPS Auth. The application should then be started with a `dev` active profile
 in Intellij.
+
